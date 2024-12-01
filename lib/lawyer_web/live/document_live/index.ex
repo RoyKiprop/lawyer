@@ -1,5 +1,5 @@
 defmodule LawyerWeb.DocumentLive.Index do
-  use LawyerWeb, :live_view
+  use LawyerWeb, :admin_live_view
 
   alias Lawyer.Documents
   alias Lawyer.Documents.Document

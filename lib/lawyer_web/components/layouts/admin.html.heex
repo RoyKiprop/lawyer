@@ -1,0 +1,15 @@
+<header class="px-4 sm:px-6 lg:px-8">
+  <!-- Header content -->
+</header>
+
+<main class="min-h-screen">
+  <div>
+    <.flash_group flash={@flash} />
+    <div class="flex">
+      <.admin_sidebar />
+      <div class="flex-1 md:ml-64 transition-all duration-300 min-h-screen bg-gray-50">
+        <%= @inner_content %>
+      </div>
+    </div>
+  </div>
+</main>

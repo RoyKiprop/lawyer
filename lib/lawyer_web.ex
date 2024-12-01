@@ -66,6 +66,15 @@ defmodule LawyerWeb do
     end
   end
 
+  def admin_live_view do
+    quote do
+      use Phoenix.LiveView,
+        layout: {LawyerWeb.Layouts, :app}
+
+      unquote(html_helpers())
+    end
+  end
+
   def html do
     quote do
       use Phoenix.Component
@@ -86,6 +95,7 @@ defmodule LawyerWeb do
       # Core UI components and translation
       import LawyerWeb.CoreComponents
       import LawyerWeb.Gettext
+      import BlogsWeb.Sidebar
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
