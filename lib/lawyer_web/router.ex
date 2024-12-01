@@ -17,11 +17,11 @@ defmodule LawyerWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", LawyerWeb do
-    pipe_through :browser
+  # scope "/", LawyerWeb do
+  #   pipe_through :browser
 
-    get "/", PageController, :home
-  end
+  #   get "/", PageController, :home
+  # end
 
   # Other scopes may use custom stacks.
   # scope "/api", LawyerWeb do
@@ -80,6 +80,20 @@ defmodule LawyerWeb.Router do
       on_mount: [{LawyerWeb.UserAuth, :mount_current_user}] do
       live "/users/confirm/:token", UserConfirmationLive, :edit
       live "/users/confirm", UserConfirmationInstructionsLive, :new
+
+      live "/documents", DocumentLive.Index, :index
+      live "/documents/new", DocumentLive.Index, :new
+      live "/documents/:id/edit", DocumentLive.Index, :edit
+
+      live "/documents/:id", DocumentLive.Show, :show
+      live "/documents/:id/show/edit", DocumentLive.Show, :edit
+
+      live "/categories", CategoryLive.Index, :index
+      live "/categories/new", CategoryLive.Index, :new
+      live "/categories/:id/edit", CategoryLive.Index, :edit
+
+      live "/categories/:id", CategoryLive.Show, :show
+      live "/categories/:id/show/edit", CategoryLive.Show, :edit
     end
   end
 end

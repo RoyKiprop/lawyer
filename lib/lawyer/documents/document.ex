@@ -5,8 +5,9 @@ defmodule Lawyer.Documents.Document do
   @primary_key {:id, :binary_id, autogenerate: true}
   schema "documents" do
     field :title, :string
-    field :category, :string
     field :content, :string
+
+    belongs_to :category, Lawyer.Categories.Category
 
     timestamps(type: :utc_datetime)
   end
@@ -14,7 +15,7 @@ defmodule Lawyer.Documents.Document do
   @doc false
   def changeset(document, attrs) do
     document
-    |> cast(attrs, [:title, :content, :category])
+    |> cast(attrs, [:title, :content, :category_id])
     |> validate_required([:title, :content, :category])
   end
 end

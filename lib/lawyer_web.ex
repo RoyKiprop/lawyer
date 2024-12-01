@@ -69,7 +69,7 @@ defmodule LawyerWeb do
   def admin_live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {LawyerWeb.Layouts, :app}
+        layout: {LawyerWeb.Layouts, :admin}
 
       unquote(html_helpers())
     end
