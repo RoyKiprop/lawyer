@@ -1,5 +1,5 @@
 defmodule LawyerWeb.CategoryLive.Show do
-  use LawyerWeb, :live_view
+  use LawyerWeb, :admin_live_view
 
   alias Lawyer.Categories
 

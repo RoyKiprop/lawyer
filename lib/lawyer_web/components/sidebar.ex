@@ -26,11 +26,15 @@ defmodule BlogsWeb.Sidebar do
         icon: "fa-solid fa-gauge-high"
       },
       %{
+        name: "CATEGORIES",
+        link: "/categories",
+        icon: "fa-solid fa-newspaper"
+      },
+      %{
         name: "DOCUMENTS",
         link: "/documents",
         icon: "fa-solid fa-newspaper"
-      },
-
+      }
     ]
   end
 

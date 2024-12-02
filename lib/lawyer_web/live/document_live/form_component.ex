@@ -2,6 +2,7 @@ defmodule LawyerWeb.DocumentLive.FormComponent do
   use LawyerWeb, :live_component
 
   alias Lawyer.Documents
+  alias Lawyer.Categories
 
   @impl true
   def render(assigns) do
@@ -21,7 +22,12 @@ defmodule LawyerWeb.DocumentLive.FormComponent do
       >
         <.input field={@form[:title]} type="text" label="Title" />
         <.input field={@form[:content]} type="text" label="Content" />
-        <.input field={@form[:category]} type="text" label="Category" />
+        <.input
+          field={@form[:category_id]}
+          type="select"
+          label="Category"
+          options={Enum.map(@categories, &{&1.name, &1.id})}
+        />
         <:actions>
           <.button phx-disable-with="Saving...">Save Document</.button>
         </:actions>
@@ -32,9 +38,12 @@ defmodule LawyerWeb.DocumentLive.FormComponent do
 
   @impl true
   def update(%{document: document} = assigns, socket) do
+    categories = Categories.list_categories()
+
     {:ok,
      socket
      |> assign(assigns)
+     |> assign(categories: categories)
      |> assign_new(:form, fn ->
        to_form(Documents.change_document(document))
      end)}

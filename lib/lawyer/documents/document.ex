@@ -16,6 +16,6 @@ defmodule Lawyer.Documents.Document do
   def changeset(document, attrs) do
     document
     |> cast(attrs, [:title, :content, :category_id])
-    |> validate_required([:title, :content, :category])
+    |> validate_required([:title, :content, :category_id])
   end
 end
